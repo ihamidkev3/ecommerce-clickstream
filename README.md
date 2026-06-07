@@ -42,18 +42,6 @@ Each row: `entity_type`, `payload` (JSON), `_ingested_at`, `_source_file`. Entit
 **Silver:** parses `payload` per entity → typed UC tables (dedup, cast, explode nested fields).  
 **Gold:** `dim_users`, `dim_products`, `fact_sales`, `fact_event`.
 
----
-
-## Architecture
-
-<img width="1856" height="683" alt="Architecture" src="https://github.com/user-attachments/assets/18d6378f-0824-4e41-973d-428786d0a3eb" />
-
-<img width="1402" height="682" alt="Data flow" src="https://github.com/user-attachments/assets/a7ed10b6-cee1-4f7f-85ce-573c1011479f" />
-
-<img width="1379" height="1016" alt="Schema" src="https://github.com/user-attachments/assets/8b7447a8-f422-4d78-9e43-6d691bf72d53" />
-
----
-
 ## Deploy & local dev
 
 ```bash
