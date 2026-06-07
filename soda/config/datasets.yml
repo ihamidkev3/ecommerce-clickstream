@@ -1,0 +1,52 @@
+# Soda dataset registry — paths, temp view names, UC tables (see dq_data.register_views)
+
+sources:
+  bronze_json:
+    path: /Volumes/ecom_clickstream/bronze/delta/clickstream_json/  # sync: etl/Bronze/bronze_json.py
+
+bronze:
+  bronze_clickstream:
+    source: bronze_json
+  bronze_users:
+    source: bronze_json
+    entity: users
+  bronze_products:
+    source: bronze_json
+    entity: products
+  bronze_events:
+    source: bronze_json
+    entity: events
+  bronze_sales:
+    source: bronze_json
+    entity: sales
+  bronze_item_lookup:
+    source: bronze_json
+    entity: item_lookup
+
+silver:
+  silver_users:
+    source: table
+    name: ecom_clickstream.silver.users
+  silver_products:
+    source: table
+    name: ecom_clickstream.silver.products
+  silver_events:
+    source: table
+    name: ecom_clickstream.silver.events
+  silver_sales:
+    source: table
+    name: ecom_clickstream.silver.sales
+
+gold:
+  gold_dim_users:
+    source: table
+    name: ecom_clickstream.gold.dim_users
+  gold_dim_products:
+    source: table
+    name: ecom_clickstream.gold.dim_products
+  gold_fact_sales:
+    source: table
+    name: ecom_clickstream.gold.fact_sales
+  gold_fact_event:
+    source: table
+    name: ecom_clickstream.gold.fact_event

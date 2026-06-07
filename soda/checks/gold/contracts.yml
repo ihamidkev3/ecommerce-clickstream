@@ -1,0 +1,15 @@
+# Gold — contracts (star schema contracts)
+
+checks for gold_dim_users:
+  - missing_count(user_id) = 0:
+      name: "[contracts] dim_users PK not null"
+  - missing_count(first_touch_date) = 0:
+      name: "[contracts] first_touch_date not null"
+
+checks for gold_fact_sales:
+  - missing_count(order_id) = 0:
+      name: "[contracts] order_id not null"
+  - missing_count(user_id) = 0:
+      name: "[contracts] user_id FK not null"
+  - missing_count(transaction_timestamp) = 0:
+      name: "[contracts] transaction_timestamp not null"

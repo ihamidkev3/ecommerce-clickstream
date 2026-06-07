@@ -1,0 +1,11 @@
+# Gold — freshness and schema drift (analytics availability)
+
+checks for gold_fact_event:
+  - row_count > 0:
+      name: "[freshness_and_schema_drift] fact_event available for analytics"
+  - missing_count(event_timestamp) = 0:
+      name: "[freshness_and_schema_drift] fact_event timestamps present"
+
+checks for gold_fact_sales:
+  - row_count > 0:
+      name: "[freshness_and_schema_drift] fact_sales available for analytics"

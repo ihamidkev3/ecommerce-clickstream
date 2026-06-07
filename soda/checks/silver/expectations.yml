@@ -1,0 +1,22 @@
+# Silver — expectations (business rules)
+
+checks for silver_users:
+  - duplicate_count(user_id) = 0:
+      name: "[expectations] users unique on user_id"
+  - invalid_count(user_id) = 0:
+      valid regex: '^UA[0-9]+$'
+      name: "[expectations] user_id valid format"
+
+checks for silver_products:
+  - duplicate_count(item_id) = 0:
+      name: "[expectations] products unique on item_id"
+  - min(price) > 0:
+      name: "[expectations] price positive"
+
+checks for silver_sales:
+  - duplicate_count(order_id) = 0:
+      name: "[expectations] sales unique on order_id"
+  - min(purchase_revenue_in_usd) > 0:
+      name: "[expectations] revenue positive"
+  - min(quantity) > 0:
+      name: "[expectations] quantity positive"

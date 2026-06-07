@@ -1,0 +1,17 @@
+# Gold — integrity (referential integrity)
+
+checks for gold_fact_sales:
+  - failed rows:
+      name: "[integrity] fact_sales user_id exists in dim_users"
+      fail query: |
+        SELECT f.order_id, f.user_id
+        FROM gold_fact_sales f
+        LEFT JOIN gold_dim_users u ON f.user_id = u.user_id
+        WHERE u.user_id IS NULL
+  - failed rows:
+      name: "[integrity] fact_sales item_id exists in dim_products"
+      fail query: |
+        SELECT f.order_id, f.item_id
+        FROM gold_fact_sales f
+        LEFT JOIN gold_dim_products p ON f.item_id = p.item_id
+        WHERE p.item_id IS NULL

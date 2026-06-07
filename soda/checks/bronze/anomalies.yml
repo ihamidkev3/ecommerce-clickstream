@@ -1,0 +1,15 @@
+# Bronze — anomalies (volume bands)
+
+checks for bronze_clickstream:
+  - row_count between 700000 and 800000:
+      name: "[anomalies] bronze users volume band"
+      filter: entity_type = 'users'
+      warn: when < 720000
+  - row_count between 900000 and 1100000:
+      name: "[anomalies] bronze events volume band"
+      filter: entity_type = 'events'
+      warn: when < 950000
+  - row_count between 15000 and 25000:
+      name: "[anomalies] bronze sales volume band"
+      filter: entity_type = 'sales'
+      warn: when < 18000

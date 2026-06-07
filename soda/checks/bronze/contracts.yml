@@ -1,0 +1,17 @@
+# Bronze — contracts (data contracts)
+
+checks for bronze_clickstream:
+  - missing_count(entity_type) = 0:
+      name: "[contracts] entity_type required"
+  - missing_count(payload) = 0:
+      name: "[contracts] JSON payload required"
+  - invalid_count(entity_type) = 0:
+      valid values: [users, products, events, sales, item_lookup]
+      name: "[contracts] entity_type domain valid"
+
+checks for bronze_users:
+  - failed rows:
+      name: "[contracts] user_id key in JSON payload"
+      fail query: |
+        SELECT * FROM bronze_users
+        WHERE get_json_object(payload, '$.user_id') IS NULL

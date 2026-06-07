@@ -1,0 +1,11 @@
+# Gold — expectations (analytics business rules)
+
+checks for gold_dim_products:
+  - duplicate_count(item_id) = 0:
+      name: "[expectations] dim_products unique PK"
+
+checks for gold_fact_sales:
+  - min(purchase_revenue_in_usd) > 0:
+      name: "[expectations] fact revenue positive"
+  - duplicate_count(order_id) = 0:
+      name: "[expectations] fact orders unique"

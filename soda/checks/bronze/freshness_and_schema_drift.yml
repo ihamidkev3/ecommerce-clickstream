@@ -1,0 +1,7 @@
+# Bronze — freshness and schema drift (freshness, lineage)
+
+checks for bronze_clickstream:
+  - missing_count(_ingested_at) = 0:
+      name: "[freshness_and_schema_drift] ingestion timestamp present"
+  - missing_count(_source_file) = 0:
+      name: "[freshness_and_schema_drift] source file lineage present"

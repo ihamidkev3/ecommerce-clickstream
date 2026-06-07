@@ -1,0 +1,17 @@
+# Silver — contracts (typed schema contracts)
+
+checks for silver_users:
+  - row_count > 0:
+      name: "[contracts] silver users table not empty"
+  - missing_count(user_id) = 0:
+      name: "[contracts] user_id not null"
+  - missing_count(user_first_touch_timestamp) = 0:
+      name: "[contracts] user_first_touch_timestamp not null"
+
+checks for silver_products:
+  - row_count = 12:
+      name: "[contracts] products catalog size"
+  - missing_count(item_id) = 0:
+      name: "[contracts] item_id not null"
+  - missing_count(price) = 0:
+      name: "[contracts] price not null"

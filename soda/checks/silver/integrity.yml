@@ -1,0 +1,21 @@
+# Silver — integrity (bronze → silver reconciliation)
+#
+# Sales reconciliation: bronze_sales = raw JSON rows (~21k); silver_sales = exploded +
+# deduped on order_id (~4k). Expected ratio ≈ 19% (4050 / 21020). Floor 15% catches
+# catastrophic silver loss without failing normal dedup shrinkage.
+
+checks for silver_users:
+  - row_count > 0:
+      name: "[integrity] silver users produced from bronze"
+
+checks for silver_events:
+  - row_count > 0:
+      name: "[integrity] silver events produced from bronze"
+
+checks for silver_sales:
+  - failed rows:
+      name: "[integrity] silver sales >= 15% of bronze sales row count"
+      fail query: |
+        SELECT 1 AS reconciliation_fail
+        WHERE (SELECT COUNT(*) FROM silver_sales) <
+              0.15 * (SELECT COUNT(*) FROM bronze_sales)

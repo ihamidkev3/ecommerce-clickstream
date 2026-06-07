@@ -1,0 +1,11 @@
+# Gold — anomalies (analytics metrics)
+
+checks for gold_fact_sales:
+  - avg(purchase_revenue_in_usd) between 100 and 2000:
+      name: "[anomalies] average order value band"
+      warn: when < 200
+
+checks for gold_fact_event:
+  - row_count between 950000 and 1050000:
+      name: "[anomalies] fact_event volume band"
+      warn: when < 980000

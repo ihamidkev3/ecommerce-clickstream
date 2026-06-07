@@ -1,0 +1,9 @@
+# Bronze — integrity (ingest reconciliation)
+
+checks for bronze_clickstream:
+  - row_count > 0:
+      name: "[integrity] bronze has user JSON rows"
+      filter: entity_type = 'users'
+  - row_count > 0:
+      name: "[integrity] bronze has event JSON rows"
+      filter: entity_type = 'events'

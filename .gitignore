@@ -1,0 +1,35 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Databricks (local CLI / bundle state — regenerate on deploy)
+.databricks/
+databricks.yml
+
+# Soda local cache
+.soda/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+*.iml
+
+# Databricks IDE artifacts
+manifest.mf
+
+# Terraform (if generated under bundle)
+**/.terraform/

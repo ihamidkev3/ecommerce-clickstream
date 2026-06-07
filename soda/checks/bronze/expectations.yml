@@ -1,0 +1,15 @@
+# Bronze — expectations (validity on raw JSON)
+
+checks for bronze_users:
+  - failed rows:
+      name: "[expectations] user_id UA format in JSON"
+      fail query: |
+        SELECT * FROM bronze_users
+        WHERE get_json_object(payload, '$.user_id') NOT RLIKE '^UA[0-9]+$'
+
+checks for bronze_events:
+  - failed rows:
+      name: "[expectations] geo object present in JSON"
+      fail query: |
+        SELECT * FROM bronze_events
+        WHERE get_json_object(payload, '$.geo') IS NULL

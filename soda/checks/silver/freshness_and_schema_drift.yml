@@ -1,0 +1,13 @@
+# Silver — freshness and schema drift (availability)
+
+checks for silver_events:
+  - row_count > 0:
+      name: "[freshness_and_schema_drift] silver events available"
+  - missing_count(event_timestamp) = 0:
+      name: "[freshness_and_schema_drift] event_timestamp populated"
+
+checks for silver_sales:
+  - row_count > 0:
+      name: "[freshness_and_schema_drift] silver sales available"
+  - missing_count(transaction_timestamp) = 0:
+      name: "[freshness_and_schema_drift] transaction_timestamp populated"

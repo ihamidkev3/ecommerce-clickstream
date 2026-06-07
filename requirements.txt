@@ -1,0 +1,6 @@
+databricks-connect>=18.2.1
+ipykernel>=7.0.0
+pyyaml>=6.0
+
+# Soda Core (no Soda Cloud) — install via ./soda/install_local.sh
+# Packages: soda-core==3.3.22, soda-core-spark==3.3.22, soda-core-spark-df==3.3.22

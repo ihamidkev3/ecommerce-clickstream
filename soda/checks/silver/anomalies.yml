@@ -1,0 +1,11 @@
+# Silver — anomalies (post-dedup volume bands)
+
+checks for silver_users:
+  - row_count between 700000 and 760000:
+      name: "[anomalies] silver users post-dedup band"
+      warn: when < 720000
+
+checks for silver_events:
+  - row_count between 950000 and 1050000:
+      name: "[anomalies] silver events volume band"
+      warn: when < 980000
